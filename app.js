@@ -32,4 +32,11 @@ app.use('/api/v1', otherRoutes);
 app.use('/api/v1', blogRoutes);
 
 
+app.get('/', (req, res) => {
+  res.json({
+      data: "Server is working..."
+  });
+})
+
+
 export default app;
