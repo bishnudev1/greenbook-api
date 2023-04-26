@@ -9,10 +9,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ['https://green-books.netlify.app'];
 
 const corsOptions = {
-  origin: function(origin, callback) {
+  origin: function (origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
@@ -34,7 +34,7 @@ app.use('/api/v1', blogRoutes);
 
 app.get('/', (req, res) => {
   res.json({
-      data: "Server is working..."
+    data: "Server is working..."
   });
 })
 
