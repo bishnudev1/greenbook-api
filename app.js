@@ -9,20 +9,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-const allowedOrigins = ['https://green-books.netlify.app'];
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+app.use(cors({
+  origin: "https://green-books.netlify.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
-}
-
-app.use(cors(corsOptions));
+}));
 
 import userRoutes from './routes/userRoutes.js';
 import otherRoutes from './routes/otherRoutes.js';
