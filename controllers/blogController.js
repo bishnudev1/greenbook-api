@@ -11,7 +11,10 @@ export const getAllBlogs = async (req, res) => {
             blogs: blogs
         });
     } catch (error) {
-        console.log(error);
+        res.status(500).json({
+            success: false,
+            message: error
+        });
     }
 }
 
@@ -32,7 +35,10 @@ export const getBlog = async (req, res) => {
             blog: blog
         });
     } catch (error) {
-        console.log(error);
+        res.status(500).json({
+            success: false,
+            message: error
+        });
     }
 }
 
@@ -97,7 +103,10 @@ export const createBlog = async (req, res) => {
             message: "Your blog has been submitted. Thanks."
         });
     } catch (error) {
-        console.log(error);
+        res.status(500).json({
+            success: false,
+            message: error
+        });
     }
 }
 

@@ -84,7 +84,6 @@ export const logout = async (req, res) => {
 }
 
 export const myProfile = async (req, res) => {
-    res.set('Access-Control-Allow-Origin', 'http://localhost:3000/');
     try {
 
         const user = await User.findById(req.user._id);
@@ -97,7 +96,10 @@ export const myProfile = async (req, res) => {
             user
         });
     } catch (error) {
-        console.log(error);
+        res.status(500).json({
+            success: false,
+            message: error
+        });
     }
 }
 
@@ -119,7 +121,10 @@ export const updateProfile = async (req, res) => {
         });
 
     } catch (error) {
-        console.log(error);
+        res.status(500).json({
+            success: false,
+            message: error
+        });
     }
 }
 
@@ -154,7 +159,10 @@ export const updateProfilePicture = async (req, res) => {
         });
 
     } catch (error) {
-        console.log(error);
+        res.status(500).json({
+            success: false,
+            message: error
+        });
     }
 }
 
@@ -187,6 +195,9 @@ export const updatePassword = async (req, res) => {
         });
 
     } catch (error) {
-        console.log(error);
+        res.status(500).json({
+            success: false,
+            message: error
+        });
     }
 }
