@@ -11,8 +11,8 @@ app.use(cookieParser());
 
 app.use(cors({
   //origin: "https://green-books.netlify.app",
-  origin: "http://localhost:3000",
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  //origin: "http://localhost:3000",
+  origin: "*",
   credentials: true
 }));
 
