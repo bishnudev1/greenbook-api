@@ -84,11 +84,13 @@ export const logout = async (req, res) => {
 }
 
 export const myProfile = async (req, res) => {
+    res.set('Access-Control-Allow-Origin', 'http://localhost:3000/');
     try {
 
         const user = await User.findById(req.user._id);
 
         if (!user) return new Error('Not valid user');
+
 
         res.status(200).json({
             success: true,
