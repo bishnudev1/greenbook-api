@@ -6,6 +6,9 @@ export const getAllBlogs = async (req, res) => {
     try {
         const blogs = await Blog.find();
 
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set('Content-Type', 'application/json');
+
         res.status(200).json({
             success: true,
             blogs: blogs
@@ -14,6 +17,7 @@ export const getAllBlogs = async (req, res) => {
         console.log(error);
     }
 }
+
 
 export const getBlog = async (req, res) => {
     try {
