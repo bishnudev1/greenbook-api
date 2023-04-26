@@ -7,7 +7,9 @@ export const getAllBlogs = async (req, res) => {
         const blogs = await Blog.find();
 
         res.set('Access-Control-Allow-Origin', '*');
+        console.log('Access-Control-Allow-Origin has been added !');
         res.set('Content-Type', 'application/json');
+        console.log('Content Type : appilication/json has been set !');
 
         res.status(200).json({
             success: true,
