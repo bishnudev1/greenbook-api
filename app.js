@@ -9,17 +9,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-app.use(cors({
-  origin: "http://localhost:3000",
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-}));
+const allowedOrigins = ['http://localhost:3000'];
 
-app.get('/', (req, res) => {
-  res.json({
-    data: "Server is working..."
-  });
-})
+const corsOptions = {
+  origin: function(origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}
+
+app.use(cors(corsOptions));
 
 import userRoutes from './routes/userRoutes.js';
 import otherRoutes from './routes/otherRoutes.js';
